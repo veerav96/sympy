@@ -21,7 +21,7 @@ from __future__ import print_function, division
 from collections import namedtuple
 
 import sympy
-
+from sympy import Piecewise
 from sympy.core.compatibility import reduce
 from sympy.core.logic import fuzzy_not
 from sympy.functions.elementary.trigonometric import TrigonometricFunction
@@ -1024,8 +1024,8 @@ def eval_constanttimes(constant, other, substep, integrand, symbol):
 
 @evaluates(PowerRule)
 def eval_power(base, exp, integrand, symbol):
-    return (base ** (exp + 1)) / (exp + 1)
-
+    #return (base ** (exp + 1)) / (exp + 1)
+    return Piecewise((sympy.log(base), sympy.Eq(exp, -1)),((base**(exp + 1))/(exp + 1), True))
 @evaluates(ExpRule)
 def eval_exp(base, exp, integrand, symbol):
     return integrand / sympy.ln(base)
