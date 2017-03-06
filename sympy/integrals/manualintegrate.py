@@ -1218,5 +1218,6 @@ def manualintegrate(f, var):
     sympy.integrals.integrals.integrate
     sympy.integrals.integrals.Integral.doit
     sympy.integrals.integrals.Integral
-    """
+   test
+   """
     return _manualintegrate(integral_steps(f, var))
